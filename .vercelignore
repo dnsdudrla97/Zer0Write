@@ -1,0 +1,15 @@
+node_modules
+.next
+dist
+.expo
+.expo-shared
+.agents
+.git
+.gitignore
+.DS_Store
+.env
+.env.*
+*.env
+*.local
+secrets
+credentials

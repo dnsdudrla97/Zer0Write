@@ -1,0 +1,31 @@
+{
+  "name": "Zer0Write",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit --pretty false --incremental false",
+    "typecheck": "tsc --noEmit --incremental false",
+    "check:deploy": "npm run lint && npm run test && npm run build"
+  },
+  "engines": {
+    "node": "20.x",
+    "npm": ">=10"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.4"
+  }
+}

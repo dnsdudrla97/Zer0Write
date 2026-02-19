@@ -1,0 +1,96 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #09090b;
+  color: #ffffff;
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.Zer0Write-shell-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.Zer0Write-shell-input {
+  border-bottom: 1px solid #27272a;
+}
+
+.Zer0Write-shell-output {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.Zer0Write-shell-output-scroll {
+  min-height: 0;
+  padding: 16px;
+}
+
+@media (min-width: 1024px) {
+  .Zer0Write-shell-body {
+    flex-direction: row;
+    overflow: hidden;
+  }
+
+  .Zer0Write-shell-input,
+  .Zer0Write-shell-output {
+    flex: 1 1 0;
+    min-height: 0;
+  }
+
+  .Zer0Write-shell-input {
+    border-bottom: none;
+    border-right: 1px solid #27272a;
+  }
+
+  .Zer0Write-shell-output-scroll {
+    flex: 1;
+    overflow: auto;
+  }
+}
+
+@keyframes Zer0Write-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes Zer0Write-toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
