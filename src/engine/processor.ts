@@ -41,6 +41,15 @@ function buildTitle(label: string, cp: number, extra?: string): string {
 }
 
 /**
+ * Normalize characters that should be preserved as ASCII equivalents.
+ * - U+2015 HORIZONTAL BAR -> "-"
+ * - U+00D7 MULTIPLICATION SIGN -> "x"
+ */
+function normalizeForClean(text: string): string {
+  return text.normalize('NFKC').replace(/\u2015/g, '-').replace(/\u00D7/g, 'x');
+}
+
+/**
  * Process raw text and produce a complete scan result.
  *
  * Pipeline:
@@ -184,6 +193,18 @@ export function processText(raw: string): ScanResult {
         break;
       }
 
+      case 'HBAR': {
+        addStealth('HBAR', info.label, c, buildTitle(info.label, cp), 1);
+        i += charLen;
+        break;
+      }
+
+      case 'MULT': {
+        addStealth('MULT', info.label, c, buildTitle(info.label, cp), 1);
+        i += charLen;
+        break;
+      }
+
       case 'ANNO': {
         const name = cp >= 0x1D173 ? 'MusAnn' : 'IntAnn';
         addStealth('ANNO', info.label, name, buildTitle(info.label, cp), 1);
@@ -202,8 +223,8 @@ export function processText(raw: string): ScanResult {
 
   flushText(); // flush any remaining normal text
 
-  // ── Cleaned output: NFKC + single-pass regex strip ──
-  const cleaned = raw.normalize('NFKC').replace(STEALTH_REGEX, '');
+  // ── Cleaned output: normalization/substitution + single-pass regex strip ──
+  const cleaned = normalizeForClean(raw).replace(STEALTH_REGEX, '');
 
   // ── Stats ──
   const totalChars = [...raw].length;

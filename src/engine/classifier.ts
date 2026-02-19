@@ -4,7 +4,15 @@
 // ═══════════════════════════════════════════════════════════
 
 import type { StealthInfo } from './types';
-import { ZERO_CHARS, BIDI_MAP, SMART_QUOTES, BULLET_CHARS, DASH_CHARS } from './constants';
+import {
+  ZERO_CHARS,
+  BIDI_MAP,
+  SMART_QUOTES,
+  BULLET_CHARS,
+  DASH_CHARS,
+  HBAR_CHARS,
+  MULT_CHARS,
+} from './constants';
 
 /**
  * Classify a single character as stealth or null.
@@ -21,6 +29,8 @@ import { ZERO_CHARS, BIDI_MAP, SMART_QUOTES, BULLET_CHARS, DASH_CHARS } from './
  *  QUOTE    — Smart/curly quotes (U+201C–201E, U+2018–201A)
  *  BULLET   — LLM-typical bullets (•◦‣⁃∙·)
  *  DASH     — LLM punctuation (–—…)
+ *  HBAR     — Horizontal bar (―)
+ *  MULT     — Multiplication sign (×)
  *
  * @param c - A single character (may be multi-byte)
  * @returns StealthInfo or null if the character is normal
@@ -81,6 +91,16 @@ export function isStealth(c: string): StealthInfo | null {
   // LLM punctuation
   if (DASH_CHARS.has(c)) {
     return { type: 'DASH', label: 'LLM-Punct' };
+  }
+
+  // Horizontal bar
+  if (HBAR_CHARS.has(c)) {
+    return { type: 'HBAR', label: 'HorizBar' };
+  }
+
+  // Multiplication sign
+  if (MULT_CHARS.has(c)) {
+    return { type: 'MULT', label: 'MultiplySign' };
   }
 
   return null;

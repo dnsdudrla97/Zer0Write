@@ -19,6 +19,8 @@ describe('engine classifier', () => {
     expect(isStealth('\u200B')?.type).toBe('ZERO');
     expect(isStealth(String.fromCodePoint(0xE0001))?.type).toBe('TAG');
     expect(isStealth('\u2062')?.type).toBe('SNEAKY');
+    expect(isStealth('―')?.type).toBe('HBAR');
+    expect(isStealth('×')?.type).toBe('MULT');
     expect(isStealth('A')).toBeNull();
   });
 });
@@ -73,5 +75,13 @@ describe('processText', () => {
     expect(stealthSegment && stealthSegment.kind === 'stealth' ? stealthSegment.decoded : '').toBe(
       'C',
     );
+  });
+
+  it('replaces horizontal bar and multiplication sign in cleaned output', () => {
+    const result = processText('A―B×C');
+
+    expect(result.cleaned).toBe('A-BxC');
+    expect(result.stats.catCounts.HBAR).toBe(1);
+    expect(result.stats.catCounts.MULT).toBe(1);
   });
 });

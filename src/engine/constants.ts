@@ -79,6 +79,16 @@ export const DASH_CHARS = new Set<string>([
   '\u2026', // …
 ]);
 
+/** Horizontal bar punctuation */
+export const HBAR_CHARS = new Set<string>([
+  '\u2015', // ―
+]);
+
+/** Multiplication sign commonly used as obfuscated x */
+export const MULT_CHARS = new Set<string>([
+  '\u00D7', // ×
+]);
+
 /**
  * Master stealth-strip regex.
  * Single-pass removal of ALL stealth characters after NFKC normalization.
