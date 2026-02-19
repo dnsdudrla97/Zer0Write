@@ -1,6 +1,8 @@
 # AI
 .agents
+memory/
 
+.nvmrc
 
 # Dependencies / build outputs
 node_modules/
