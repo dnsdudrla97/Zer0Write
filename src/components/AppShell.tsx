@@ -75,6 +75,18 @@ export const AppShell: React.FC = () => {
         </section>
       </div>
 
+      <footer style={styles.footer}>
+        <a
+          href="https://x.com/Zer0Luck"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={styles.footerLink}
+          aria-label="Developed by Zer0Luck"
+        >
+          Developed by Zer0Luck
+        </a>
+      </footer>
+
       <Toast message={toast.message} type={toast.type} visible={toast.visible} onHide={hideToast} />
     </main>
   );
@@ -87,5 +99,18 @@ const styles: Record<string, React.CSSProperties> = {
     color: theme.textPrimary,
     display: 'flex',
     flexDirection: 'column',
+  },
+  footer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '8px 12px 12px',
+  },
+  footerLink: {
+    fontSize: 10,
+    color: theme.textDim,
+    textDecoration: 'none',
+    letterSpacing: 0.2,
+    opacity: 0.9,
   },
 };
