@@ -7,7 +7,7 @@
 import type { Segment, ScanResult, ScanStats, StealthType } from './types';
 import { isStealth } from './classifier';
 import { decodeTags, decodeSneakyBits, decodeBIDI, decodeVS, decodeRegional } from './decoders';
-import { STEALTH_REGEX } from './constants';
+import { DASH_REPLACEMENTS, STEALTH_REGEX } from './constants';
 
 /**
  * Calculate Shannon entropy of a string.
@@ -38,6 +38,10 @@ function buildTitle(label: string, cp: number, extra?: string): string {
   const hex = 'U+' + cp.toString(16).toUpperCase().padStart(4, '0');
   if (extra) return `${label} (${extra})`;
   return `${label} (${hex})`;
+}
+
+function applyDashReplacements(text: string): string {
+  return text.replace(/[⸺⸻→]/g, (char) => DASH_REPLACEMENTS[char] ?? char);
 }
 
 /**
@@ -202,8 +206,8 @@ export function processText(raw: string): ScanResult {
 
   flushText(); // flush any remaining normal text
 
-  // ── Cleaned output: NFKC + single-pass regex strip ──
-  const cleaned = raw.normalize('NFKC').replace(STEALTH_REGEX, '');
+  // ── Cleaned output: NFKC + targeted replacements + single-pass regex strip ──
+  const cleaned = applyDashReplacements(raw.normalize('NFKC')).replace(STEALTH_REGEX, '');
 
   // ── Stats ──
   const totalChars = [...raw].length;

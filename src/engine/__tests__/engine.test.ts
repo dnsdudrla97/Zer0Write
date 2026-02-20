@@ -19,6 +19,9 @@ describe('engine classifier', () => {
     expect(isStealth('\u200B')?.type).toBe('ZERO');
     expect(isStealth(String.fromCodePoint(0xE0001))?.type).toBe('TAG');
     expect(isStealth('\u2062')?.type).toBe('SNEAKY');
+    expect(isStealth('⸺')?.type).toBe('DASH');
+    expect(isStealth('⸻')?.type).toBe('DASH');
+    expect(isStealth('→')?.type).toBe('DASH');
     expect(isStealth('A')).toBeNull();
   });
 });
@@ -73,5 +76,12 @@ describe('processText', () => {
     expect(stealthSegment && stealthSegment.kind === 'stealth' ? stealthSegment.decoded : '').toBe(
       'C',
     );
+  });
+
+  it('replaces two-em and three-em dashes in cleaned output', () => {
+    const result = processText('a⸺b⸻c→d');
+
+    expect(result.cleaned).toBe('a--b---c->d');
+    expect(result.stats.catCounts.DASH).toBe(3);
   });
 });
