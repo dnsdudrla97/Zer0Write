@@ -22,6 +22,7 @@ describe('engine classifier', () => {
     expect(isStealth('—')?.type).toBe('DASH');
     expect(isStealth('⸺')?.type).toBe('DASH');
     expect(isStealth('⸻')?.type).toBe('DASH');
+    expect(isStealth('→')?.type).toBe('DASH');
     expect(isStealth('A')).toBeNull();
   });
 });
@@ -79,9 +80,9 @@ describe('processText', () => {
   });
 
   it('replaces long dash variants in cleaned output', () => {
-    const result = processText('a—b⸺c⸻d');
+    const result = processText('a—b⸺c⸻d→e');
 
-    expect(result.cleaned).toBe('a-b->c->d');
-    expect(result.stats.catCounts.DASH).toBe(3);
+    expect(result.cleaned).toBe('a-b->c->d->e');
+    expect(result.stats.catCounts.DASH).toBe(4);
   });
 });

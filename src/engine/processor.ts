@@ -41,7 +41,7 @@ function buildTitle(label: string, cp: number, extra?: string): string {
 }
 
 function applyDashReplacements(text: string): string {
-  return text.replace(/[—⸺⸻]/g, (char) => DASH_REPLACEMENTS[char] ?? char);
+  return text.replace(/[—⸺⸻→]/g, (char) => DASH_REPLACEMENTS[char] ?? char);
 }
 
 /**
