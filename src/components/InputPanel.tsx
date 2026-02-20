@@ -19,7 +19,7 @@ Zer0Write detects hidden characters:
 • SneakyBits (U+2062/U+2064 binary)
 • Bidi overrides & isolates
 • Variation Selector watermarks
-• Smart quotes, em-dashes, ellipsis
+• Smart quotes, em-dash, 2/3-em dash, ellipsis
 • LLM bullets (•◦‣⁃∙·)
 • Variable-width spaces
 • Regional Indicator flag chars`;
