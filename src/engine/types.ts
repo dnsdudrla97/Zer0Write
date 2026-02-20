@@ -14,7 +14,9 @@ export type StealthType =
   | 'ANNO'
   | 'QUOTE'
   | 'BULLET'
-  | 'DASH';
+  | 'DASH'
+  | 'HBAR'
+  | 'MULT';
 
 /** Result of isStealth() classification */
 export interface StealthInfo {
