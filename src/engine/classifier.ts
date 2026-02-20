@@ -28,7 +28,7 @@ import {
  *  ANNO     — Interlinear (U+FFF9–FFFB) + Musical annotations (U+1D173–1D17A)
  *  QUOTE    — Smart/curly quotes (U+201C–201E, U+2018–201A)
  *  BULLET   — LLM-typical bullets (•◦‣⁃∙·)
- *  DASH     — LLM punctuation (–—…)
+ *  DASH     — LLM punctuation (–—⸺⸻→…)
  *  HBAR     — Horizontal bar (―)
  *  MULT     — Multiplication sign (×)
  *

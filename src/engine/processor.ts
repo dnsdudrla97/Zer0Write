@@ -7,7 +7,7 @@
 import type { Segment, ScanResult, ScanStats, StealthType } from './types';
 import { isStealth } from './classifier';
 import { decodeTags, decodeSneakyBits, decodeBIDI, decodeVS, decodeRegional } from './decoders';
-import { STEALTH_REGEX } from './constants';
+import { CLEAN_REPLACEMENTS, STEALTH_REGEX } from './constants';
 
 /**
  * Calculate Shannon entropy of a string.
@@ -40,13 +40,8 @@ function buildTitle(label: string, cp: number, extra?: string): string {
   return `${label} (${hex})`;
 }
 
-/**
- * Normalize characters that should be preserved as ASCII equivalents.
- * - U+2015 HORIZONTAL BAR -> "-"
- * - U+00D7 MULTIPLICATION SIGN -> "x"
- */
 function normalizeForClean(text: string): string {
-  return text.normalize('NFKC').replace(/\u2015/g, '-').replace(/\u00D7/g, 'x');
+  return text.normalize('NFKC').replace(/[―×⸺⸻→]/g, (char) => CLEAN_REPLACEMENTS[char] ?? char);
 }
 
 /**
