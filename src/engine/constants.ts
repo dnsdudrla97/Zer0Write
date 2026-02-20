@@ -82,11 +82,12 @@ export const DASH_CHARS = new Set<string>([
   '\u2026', // …
 ]);
 
-/** Horizontal bar and multiplication signs */
+/** Horizontal bar punctuation */
 export const HBAR_CHARS = new Set<string>([
   '\u2015', // ―
 ]);
 
+/** Multiplication sign commonly used as obfuscated x */
 export const MULT_CHARS = new Set<string>([
   '\u00D7', // ×
 ]);
@@ -101,7 +102,6 @@ export const CLEAN_REPLACEMENTS: Record<string, string> = {
   '\u2E3B': '---', // ⸻
   '\u2192': '->', // →
 };
-
 /**
  * Master stealth-strip regex.
  * Single-pass removal of ALL stealth characters after NFKC normalization.

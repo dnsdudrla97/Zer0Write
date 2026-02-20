@@ -33,8 +33,8 @@ export const categoryStyles: Record<StealthType, CategoryStyle> = {
   QUOTE:    { bg: '#34d399', text: '#000000', barColor: '#10b981' }, // emerald
   BULLET:   { bg: '#818cf8', text: '#000000', barColor: '#6366f1' }, // indigo
   DASH:     { bg: '#2dd4bf', text: '#000000', barColor: '#14b8a6' }, // teal
-  HBAR:     { bg: '#f59e0b', text: '#000000', barColor: '#d97706' }, // amber
-  MULT:     { bg: '#22c55e', text: '#000000', barColor: '#16a34a' }, // green
+  HBAR:     { bg: '#67e8f9', text: '#000000', barColor: '#06b6d4' }, // cyan
+  MULT:     { bg: '#fda4af', text: '#000000', barColor: '#f43f5e' }, // rose
 };
 
 /** Toast color variants */

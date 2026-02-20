@@ -95,12 +95,12 @@ export function isStealth(c: string): StealthInfo | null {
 
   // Horizontal bar
   if (HBAR_CHARS.has(c)) {
-    return { type: 'HBAR', label: 'H-Bar' };
+    return { type: 'HBAR', label: 'HorizBar' };
   }
 
   // Multiplication sign
   if (MULT_CHARS.has(c)) {
-    return { type: 'MULT', label: 'Multiply' };
+    return { type: 'MULT', label: 'MultiplySign' };
   }
 
   return null;

@@ -99,6 +99,14 @@ vercel --prod
 - Do not commit `.env*`, key files, or credential material.
 - Current repository includes ignore rules for common secret/hidden files.
 
+## License
+This project is licensed under the Apache License 2.0.
+
+- License file: `LICENSE`
+- SPDX identifier: `Apache-2.0`
+- Commercial use, modification, and redistribution are permitted under Apache-2.0 terms.
+- The license also includes an explicit patent grant from contributors.
+
 ## Citations
 - Gao et al., *Imperceptible Jailbreaking against Large Language Models* (arXiv:2510.05025, 2025)  
   [https://arxiv.org/abs/2510.05025](https://arxiv.org/abs/2510.05025)
